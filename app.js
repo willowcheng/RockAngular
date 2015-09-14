@@ -8,15 +8,18 @@
         this.products = gems;
     });
 
-    app.controller('TabController', function() {
+    app.controller('TabController', function(){
         this.tab = 1;
-        this.setTab = function(setTab){
-            this.tab = setTab;
+
+        this.setTab = function(newValue){
+            this.tab = newValue;
         };
-        this.isSet = function(isSet){
-            return this.tab == isSet;
+
+        this.isSet = function(tabName){
+            return this.tab === tabName;
         };
     });
+
     var gems = [
         {
             name: 'Azurite',
