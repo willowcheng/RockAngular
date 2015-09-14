@@ -8,9 +8,9 @@
     <meta charset="UTF-8">
 </head>
 <body class="list-group" ng-controller="StoreController as store">
-<!--  Store Header  -->
 <header>
     <h1 class="text-center">Flatlander Crafted Gems</h1>
+
     <h2 class="text-center">– an Angular store –</h2>
 </header>
 <div class="list-group-item" ng-repeat="product in store.products">
@@ -18,17 +18,17 @@
         {{product.name}}
         <em class="pull-right">{{product.price | currency}}</em>
     </h3>
+
     <!-- Image Gallery  -->
-    <section ng-show="product.images.length">
-        <img ng-src="{{product.images[0]}}" />
+    <div class='gallery' ng-show="product.images.length" ng-controller="GalleryController as gallery">
+        <img ng-src="{{product.images[gallery.current]}}"/>
         <ul class="list-inline thumbs">
             <li class="thumbnail" ng-repeat="image in product.images">
-                <img ng-src="{{image}}" />
+                <img ng-src="{{image}}"/>
             </li>
         </ul>
-    </section>
+    </div>
 
-    <!-- Product Tabs -->
     <section class="tab" ng-controller="TabController as tab">
         <ul class="nav nav-pills">
             <li ng-class="{ active: tab.isSet(1) }">
@@ -50,7 +50,6 @@
             <h4>Reviews</h4>
         </div>
     </section>
-
 </div>
 </body>
 </html>
